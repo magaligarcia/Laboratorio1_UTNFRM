@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -58,16 +59,20 @@ public class AgendaTelefonica {
                         System.out.println("Ingrese el nombre del contacto:");
                         contactoBuscado = leerCadena().toUpperCase();
                         if (agenda.containsKey(contactoBuscado)) {
-                            System.out.println("\n========== ✆ ==========");
-                            System.out.println(" •" + contactoBuscado + " ☏ " + agenda.get(numeroTelefonico));
-                            System.out.println("========== ✆ ==========\n");
+                            Iterator iterador = agenda.entrySet().iterator();
+                            Map.Entry contacto;
+                            while (iterador.hasNext()) {
+                                contacto = (Map.Entry) iterador.next();
+                                System.out.println("\n========== ✆ ==========");
+                                System.out.println("• "+contacto.getKey() + " ☏ " + contacto.getValue());
+                                System.out.println("========== ✆ ==========\n");
+                            }
                         } else {
                             System.out.println("***********************");
                             System.out.println(" El contacto no existe");
                             System.out.println("***********************");
                         }
                     }
-
                     break;
                 case 3:
                     System.out.println("╔══════════════════════════╗");
